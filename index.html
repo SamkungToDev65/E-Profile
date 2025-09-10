@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Personal E-Portfolio – projects, experience, skills, and contact." />
+    <title>E‑Portfolio • Your Name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind on-the-fly config
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Prompt', 'ui-sans-serif', 'system-ui'] },
+                    colors: {
+                        brand: {
+                            50: '#eef7ff', 100: '#d9edff', 200: '#bfe1ff', 300: '#95cffc',
+                            400: '#5bb4f7', 500: '#2294f2', 600: '#0e75cc', 700: '#0a5da4',
+                            800: '#094e87', 900: '#0b416e', 950: '#072949'
+                        }
+                    },
+                    boxShadow: {
+                        soft: '0 10px 25px -10px rgba(0,0,0,0.25)'
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+    <style>
+        /* Print-friendly */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .print-break {
+                page-break-before: always;
+            }
+
+            html {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+    <!-- Skip link -->
+    <a href="#main"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-brand-600 focus:text-white focus:px-3 focus:py-2 focus:rounded-lg">Skip
+        to content</a>
+
+    <!-- Navbar -->
+    <header
+        class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-900/70 border-b border-slate-200/60 dark:border-slate-700/60">
+        <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <div class="flex items-center gap-3">
+                <div
+                    class="h-9 w-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white grid place-items-center shadow-soft">
+                   บอส </div>
+                <span class="font-semibold tracking-tight">วัฒพงศ์ วงค์อ้าย</span>
+            </div>
+
+            <button id="navToggle" class="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+                aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+
+            <ul id="navMenu" class="hidden md:flex items-center gap-6 text-sm">
+                <li><a class="hover:text-brand-600" href="#about">เกี่ยวกับฉัน</a></li>
+                <li><a class="hover:text-brand-600" href="#skills">ทักษะ</a></li>
+                <li><a class="hover:text-brand-600" href="#experience">ประสบการณ์</a></li>
+                <li><a class="hover:text-brand-600" href="#contact">ติดต่อ</a></li>
+            </ul>
+
+            <div class="hidden md:flex items-center gap-2">
+                <button id="themeToggle"
+                    class="no-print inline-flex items-center gap-2 rounded-xl border border-slate-300/70 dark:border-slate-700 px-3 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800"
+                    aria-label="Toggle dark mode">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M21.752 15.002A9.718 9.718 0 0 1 12.004 22C6.486 22 2 17.514 2 12.001 2 7.42 4.948 3.6 9.1 2.216a.75.75 0 0 1 .926.986A8 8 0 0 0 20 12.001a7.97 7.97 0 0 1-1.279 4.37c-.23.375.18.8.6.63.94-.38 1.85-.946 2.43-2 .15-.27.56-.23.7 0.001Z" />
+                    </svg>
+                    ธีม
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-800">
+            <ul class="px-4 py-3 space-y-2">
+                <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        href="#about">About</a></li>
+                <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        href="#skills">Skills</a></li>
+                <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        href="#experience">Experience</a></li>
+                <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        href="#contact">Contact</a></li>
+                <li class="flex items-center gap-2 pt-2">
+                    <button id="themeToggleMobile"
+                        class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300/70 dark:border-slate-700 px-3 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800">Theme</button>
+                    <a href="#"
+                        class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300/70 dark:border-slate-700 px-3 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800">Resume</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main id="about">
+        <!-- Hero -->
+        <section class="relative isolate overflow-hidden">
+            <div
+                class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-50 to-white dark:from-slate-800/40 dark:to-slate-900">
+            </div>
+            <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <h1 class="mt-4 text-4xl/tight font-extrabold tracking-tight md:text-5xl">
+                        <span class="text-brand-600">ผมชื่อ วัฒพงศ์ วงค์อ้าย</span> ชื่อเล่นว่า บิ้กบอส <span>ตอนนี้ทำงานเป็น IT Support</span>
+                        ปัจจุบันทำงานที่โรงงานแห่งหนึ่งในประเทศ ลาว 
+                    </h1>
+                    <p class="mt-4 text-xl text-slate-600 dark:text-slate-300 max-w-prose">
+                        ผมอาจจะไม่ใช่คนที่เก่งที่สุด แต่ผมมีความตั้งใจที่จะเรียนรู้และพัฒนาตนเองอยู่เสมอ</p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a href="./Watpong (4).pdf" target="_blank" rel="noopener"
+                            class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-white shadow-soft hover:bg-brand-700"><svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M7.5 10.5 12 15m0 0 4.5-4.5M12 15V3" />
+                            </svg>
+                            Resume</a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-square rounded-3xl bg-gradient-to-br from-brand-600/20 to-brand-800/20 p-1">
+                        <img src="./profile.jpg"
+                            alt="Profile" class="h-full w-full object-cover rounded-[22px]" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section  class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-3 gap-10">
+                <div>
+                    <h2 class="text-2xl font-bold">เกี่ยวกับฉัน</h2>
+                    <p class="mt-2 text-slate-500">ประวัติแบบย่อ</p>
+                </div>
+                <div class="md:col-span-2 space-y-4 leading-relaxed">
+                    <p>มีประสบการณ์ด้าน IT Office / IT Administrator ในประเทศลาว ดูแล
+                        ระบบ IT ภายในองค์กร ทั้งเครือข่าย Server Firewall (FortiGate)
+                        NAS CCTV VM และ BackupCenter รวมถึงสนับสนุนผู้ใช้งานและ
+                        แก้ไขปัญหา Hardware/Software พร้อมพัฒนาทักษะอย่างต่อเนื่อง</p>
+                    <p>นอกจากนี้ยังมีความสามารถในการเล่นกีฬา เช่น ฟุตบอล และบาสเกตบอล
+                        ซึ่งช่วยเสริมสร้างทักษะการทำงานเป็นทีมและการสื่อสารที่ดี </p>
+                    <p> จบจากสาขาวิชา เทคโนโลยี
+                        คอมพิวเตอร์
+                        สาขางาน คอมพิวเตอร์
+                        ฮาร์ดแวร์
+                        วิทยาลัยเทคนิดลำปาง
+                        สำเร็จการศึกษา ปี 2565
+                        GPA 2.92</p>
+                    <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+                        <li class="flex items-center gap-2"><span
+                                class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>แพร่, ประเทศไทย</li>
+                        <li class="flex items-center gap-2"><span
+                                class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>IT Office / IT Administrator</li>
+                        <li class="flex items-center gap-2"><span
+                                class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>ไทย</li>
+                        <li class="flex items-center gap-2"><span
+                                class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>ด้านเครือข่าย โปรแกรมประยุกต์</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="bg-slate-50 dark:bg-slate-800/40">
+            <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+                <div class="flex items-end justify-between flex-wrap gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold">ทักษะ</h2>
+                        <p class="mt-2 text-slate-500">เครื่องมือที่ฉันใช้</p>
+                    </div>
+                    <a href="#contact"
+                        class="no-print inline-flex items-center gap-2 rounded-xl border border-slate-300/70 dark:border-slate-700 px-3 py-2 text-sm hover:bg-slate-100/60 dark:hover:bg-slate-800/60">พร้อมพัฒนาทักษะอย่างต่อเนื่อง</a>
+                </div>
+
+                <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card -->
+                    <div
+                        class="rounded-2xl border border-slate-200 dark:border-slate-700 p-5 bg-white dark:bg-slate-900">
+                        <h3 class="font-semibold">ด้านเว็บไซต์</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            <li>HTML5, CSS3, Bootstrap, PHP, MySQL , phpAdmin</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="rounded-2xl border border-slate-200 dark:border-slate-700 p-5 bg-white dark:bg-slate-900">
+                        <h3 class="font-semibold">ด้านเครือข่าย</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            <li>LAN, WAN, TCP/IP, CCTV, NAS</li>
+                            <li>Firewall (FortiGate), VPN</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="rounded-2xl border border-slate-200 dark:border-slate-700 p-5 bg-white dark:bg-slate-900">
+                        <h3 class="font-semibold">ด้านเทคโนโลยี</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            <li>Windows/Office 365, Google Workspace</li>
+                            <li>OpenAI, ChatGPT</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="rounded-2xl border border-slate-200 dark:border-slate-700 p-5 bg-white dark:bg-slate-900">
+                        <h3 class="font-semibold">ด้านการแก้ไขปัญหา</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            <li>แก้ปัญหา
+                                Hardware/Software, Windows/Office 365, Printer/Email</li>
+                            <li>ติดตั้ง/ดูแลระบบ Server, VM, BackupCenter</li>
+                            <li>มีความรู้เกี่ยวกับ การป้องกันไวรัส (Antivirus Protection) และ
+                                การแก้ไขปัญหาที่เกิดจากมัลแวร์หรือไวรัสคอมพิวเตอร์</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="bg-slate-50 dark:bg-slate-800/40">
+            <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+                <h2 class="text-2xl font-bold">ประสบการณ์</h2>
+                <div class="mt-8 grid lg:grid-cols-2 gap-6">
+
+                    <article
+                        class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6">
+                        <header class="flex items-center justify-between gap-4">
+                            <div>
+                                <h3 class="font-semibold">บริษัท โตเกียว คอยล์ เอ็นจิเนียร์ (ประเทศลาว) จำกัด</h3>
+                                <p class="text-sm text-slate-500">ตำแหน่งงาน เจ้าหน้าที่ IT | มีนาคม 2567 - กันยายน 2568
+                                </p>
+                            </div>
+                            <span
+                                class="px-2 py-1 text-xs rounded-full bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-200">พนักงานประจำ</span>
+                        </header>
+                        <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                            <li>ระบบยืม-คืนอุปกรณ์ โปรแกรมมิ่ง</li>
+                            <li>ดูแลระบบเครือข่ายและเซิร์ฟเวอร์</li>
+                            <li>มีความรู้เกี่ยวกับการป้องกันไวรัส (Antivirus Protection)
+                                และการแก้ไขปัญหาที่เกิดจากมัลแวร์หรือไวรัสคอมพิวเตอร์</li>
+                        </ul>
+                    </article>
+
+                    <article
+                        class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6">
+                        <header class="flex items-center justify-between gap-4">
+                            <div>
+                                <h3 class="font-semibold">บริษัท โตเกียว คอยล์ เอ็นจิเนียร์ (ประเทศไทย) จำกัด</h3>
+                                <p class="text-sm text-slate-500">ตำแหน่งงาน เจ้าหน้าที่ IT | กันยายน 2567 - มีนาคม 2567
+                                </p>
+                            </div>
+                            <span
+                                class="px-2 py-1 text-xs rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-200">ทดลองงาน</span>
+                        </header>
+                        <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                            <li>ซ่อมคอมพิวเตอร์</li>
+                            <li>ติดตั้งระบบปฏิบัติการ Windows และโปรแกรมประยุกต์</li>
+                            <li>ตรวจเช็ดระบบกล้องวงจรปิด CCTV</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="bg-slate-50 dark:bg-slate-800/40">
+            <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+                <div class="flex flex-row justify-center items-start">
+                    <div>
+                        <h2 class="text-2xl font-bold text-center">ช่องทางการติดต่อ</h2>
+                        <p class="mt-2 text-slate-500 text-center">เรายินดีให้บริการคุณ</p>
+                        <div class="mt-6 space-y-3 text-sm text-center text-slate-700 dark:text-slate-300">
+                            <p><span class="font-medium">อีเมล:</span> boszxcas@gmail.com</p>
+                            <p><span class="font-medium">โทรศัพท์:</span> +66 63-6861030</p>
+                            <p><span class="font-medium">ที่อยู่:</span> 117 หมู่ 8 ฝ้ายคำแลนด์ ต.บ้านกลาง อ.เมือง
+                                จ.ลำพูน 51000</p>
+                        </div>
+                        <div class="flex flex-row justify-center mt-6 space-x-4">
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/watpong.wongai.2025"
+                                class="text-slate-500 hover:text-blue-600" aria-label="Facebook">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-2.9h2v-2.2c0-2 1.2-3.2 3-3.2.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2v2.1h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z" />
+                                </svg>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/watpong-wongai-5b0b2525b/"
+                                class="text-slate-500 hover:text-blue-700" aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" />
+                                </svg>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/" class="text-slate-500 hover:text-pink-500"
+                                aria-label="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 
+            0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 
+            3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 
+            3a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 7zm0 
+            2a3 3 0 1 1-.001 6.001A3 3 0 0 1 12 9zm4.5-3a1.5 
+            1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                                </svg>
+                            </a>
+
+                            <!-- GitHub -->
+                            <a href="https://github.com/" class="text-slate-500 hover:text-gray-800"
+                                aria-label="GitHub">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 
+                4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 
+                0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.155-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 
+                1.004.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 
+                2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 
+                0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.27.098-2.647 
+                0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 
+                6.844c.85.004 1.705.115 2.504.337 1.909-1.296 
+                2.747-1.027 2.747-1.027.546 1.379.202 2.396.1 
+                2.65.64.7 1.028 1.595 1.028 2.688 
+                0 3.848-2.339 4.695-4.566 4.944.359.309.678.919.678 
+                1.852 0 1.336-.012 2.415-.012 2.743 
+                0 .268.18.58.688.482A10.019 10.019 0 0 0 22 
+                12.017C22 6.484 17.523 2 12 2z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-200 dark:border-slate-800">
+            <div
+                class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-sm text-slate-500">© <span id="year"></span> วัฒพงศ์ วงค์อ้าย. สงวนสิทธิ์ห้ามคัดลอก.</p>
+            </div>
+        </footer>
+
+        <button id="backToTop"
+            class="no-print fixed bottom-6 right-6 hidden rounded-full p-3 shadow-soft bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-700"
+            aria-label="Back to top">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75 12 8.25l7.5 7.5" />
+            </svg>
+        </button>
+    </main>
+
+    <script>
+        // Persist theme
+        const root = document.documentElement;
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            root.classList.add('dark');
+        }
+
+        function toggleTheme() {
+            root.classList.toggle('dark');
+            localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+        document.getElementById('themeToggleMobile')?.addEventListener('click', toggleTheme);
+
+        // Mobile nav
+        const navToggle = document.getElementById('navToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navMenu = document.getElementById('navMenu');
+        navToggle?.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) backToTop.classList.remove('hidden');
+            else backToTop.classList.add('hidden');
+        });
+        backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Footer year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Fake form submit (front-end only)
+        const form = document.querySelector('#contact form');
+        const formStatus = document.getElementById('formStatus');
+        form?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formStatus.textContent = 'Thanks! I\'ll get back to you soon.';
+            form.reset();
+            setTimeout(() => (formStatus.textContent = ''), 4000);
+        });
+    </script>
+</body>
+
+</html>
