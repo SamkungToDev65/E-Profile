@@ -97,22 +97,22 @@
 
         <!-- Mobile menu -->
         <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-800">
-            <ul class="px-4 py-3 space-y-2">
-                <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800"
-                        href="#about">About</a></li>
-                <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800"
-                        href="#skills">Skills</a></li>
-                <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800"
-                        href="#experience">Experience</a></li>
-                <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800"
-                        href="#contact">Contact</a></li>
-                <li class="flex items-center gap-2 pt-2">
+            <ul id="navMenu" class="flex flex-col p-4 gap-4 text-sm">
+                <li><a class="hover:text-brand-600" href="#about">เกี่ยวกับฉัน</a></li>
+                <li><a class="hover:text-brand-600" href="#skills">ทักษะ</a></li>
+                <li><a class="hover:text-brand-600" href="#experience">ประสบการณ์</a></li>
+                <li><a class="hover:text-brand-600" href="#contact">ติดต่อ</a></li>
+                <li>
                     <button id="themeToggleMobile"
-                        class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300/70 dark:border-slate-700 px-3 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800">Theme</button>
-                    <a href="#"
-                        class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300/70 dark:border-slate-700 px-3 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800">Resume</a>
-                </li>
-            </ul>
+                        class="no-print inline-flex items-center gap-2 rounded-xl border border-slate-300/70 dark:border-slate-700 px-3 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800"
+                        aria-label="Toggle dark mode">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M21.752 15.002A9.718 9.718 0 0 1 12.004 22C6.486 22 2 17.514 2 12.001 2 7.42 4.948 3.6 9.1 2.216a.75.75 0 0 1 .926.986A8 8 0 0 0 20 12.001a7.97 7.97 0 0 1-1.279 4.37c-.23.375.18.8.6.63.94-.38 1.85-.946 2.43-2 .15-.27.56-.23.7 0.001Z" />
+                    </svg>
+                    ธีม
+                </button>
+            </div>
         </div>
     </header>
 
